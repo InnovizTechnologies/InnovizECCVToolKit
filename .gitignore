@@ -16,4 +16,8 @@ venv/
 output
 version.py
 
+# configruations
+!tools/cfgs/dataset_configs/*.yaml
 
+# vscode
+.vscode
