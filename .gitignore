@@ -18,6 +18,7 @@ version.py
 
 # configruations
 !tools/cfgs/dataset_configs/*.yaml
+!tools/cfgs/innoviz_models/*.yaml
 
 # vscode
 .vscode

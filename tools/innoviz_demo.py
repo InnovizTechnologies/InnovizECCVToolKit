@@ -56,7 +56,7 @@ def main():
             pred_dicts, _ = model.forward(data_dict)
 
             gt_boxes = data_dict.get('gt_boxes')
-            if gt_boxes:
+            if gt_boxes is not None:
                 gt_boxes = gt_boxes[0][:, :-1]
 
             V.draw_scenes(
@@ -69,6 +69,7 @@ def main():
 
             if not OPEN3D_FLAG:
                 mlab.show(stop=True)
+            
 
     logger.info('Demo done.')
 

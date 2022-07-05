@@ -1,0 +1,19 @@
+CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
+
+DATA_CONFIG:
+    _BASE_CONFIG_: cfgs/dataset_configs/innoviz_dataset.yaml
+
+MODEL:
+  NAME: Dummy
+
+  POST_PROCESSING:
+    TRANSLATION_NOISE_MAX: 2
+    SIZE_NOISE_MAX: 1
+    HEADING_NOISE_MAX: 0.5
+    RECALL_THRESH_LIST: [0.3, 0.5, 0.7]
+    EVAL_METRIC: innoviz
+
+
+OPTIMIZATION:
+    BATCH_SIZE_PER_GPU: 2
+
