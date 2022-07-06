@@ -1,4 +1,4 @@
-CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
+CLASS_NAMES: ['None', 'Car', 'Pedestrian', 'Cyclist', 'Motorcycle', 'Truck', 'Unknown']
 
 DATA_CONFIG:
     _BASE_CONFIG_: cfgs/dataset_configs/innoviz_dataset.yaml

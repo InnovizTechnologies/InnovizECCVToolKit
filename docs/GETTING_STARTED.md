@@ -133,6 +133,20 @@ python -m pcdet.datasets.lyft.lyft_dataset --func create_lyft_infos \
 
 * You need to check carefully since we don't provide a benchmark for it.
 
+### Innoviz Dataset
+* Please download the official [Innoviz perception dataset](https://TBC) and 
+organize the downloaded files as follows: 
+```
+OpenPCDet
+├── data
+│   ├── innoviz
+│   │   │── training
+│   │   │   │── itwo(lidar) & id.txt(innoviz db reference)
+│   │   │── testing
+│   │   │   │── itwo(lidar) & id.txt(innoviz db reference) & gt_boxes(annotations)
+├── pcdet
+├── tools
+```
 
 ## Pretrained Models
 If you would like to train [CaDDN](../tools/cfgs/kitti_models/CaDDN.yaml), download the pretrained [DeepLabV3 model](https://download.pytorch.org/models/deeplabv3_resnet101_coco-586e9e4e.pth) and place within the `checkpoints` directory. Please make sure the [kornia](https://github.com/kornia/kornia) is installed since it is needed for `CaDDN`.

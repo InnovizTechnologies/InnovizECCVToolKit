@@ -16,6 +16,10 @@ venv/
 output
 version.py
 
+# scripts
+!tools/scripts/innoviz_demo.sh
+!tools/scripts/innoviz_test.sh
+
 # configruations
 !tools/cfgs/dataset_configs/*.yaml
 !tools/cfgs/innoviz_models/*.yaml

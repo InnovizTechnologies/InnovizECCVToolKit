@@ -106,7 +106,7 @@ def draw_box(vis, gt_boxes, color=(0, 1, 0), ref_labels=None, score=None):
         if ref_labels is None:
             line_set.paint_uniform_color(color)
         else:
-            line_set.paint_uniform_color(box_colormap[ref_labels[i]])
+            line_set.paint_uniform_color(box_colormap[ref_labels[i] % len(box_colormap)])
 
         vis.add_geometry(line_set)
 

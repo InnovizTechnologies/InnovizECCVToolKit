@@ -1,4 +1,5 @@
 
+import json
 import glob
 
 import numpy as np
@@ -24,6 +25,7 @@ class InnovizDataset(DatasetTemplate):
 
         self._gt_dir = 'gt_boxes'
         self._gt_boxes_ext = '.bin'
+        self._gt_map_fname = 'classmap.json'
 
         self.split = split if split is not None else self.dataset_cfg.DATA_SPLIT[self.mode]
         self.lidar_path = self.root_path / self.split / self._lidar_dir
@@ -32,6 +34,15 @@ class InnovizDataset(DatasetTemplate):
         data_file_list = glob.glob(str(self.lidar_path / f'*{self._lidar_ext}'))
         self.ids_list = [f.split('/')[-1][:-len(self._lidar_ext)] for f in data_file_list]
         self.ids_list.sort()
+        
+        # get gt data
+        self._gt_map = None
+        if self.gt_path.exists():
+            with open(self.gt_path / self._gt_map_fname) as f:
+                self._gt_map = json.load(f)
+                # inverse dict to int: str
+                self._gt_map = {v: k for k, v in self._gt_map.items()}
+
 
     def __len__(self):
         return len(self.ids_list)
@@ -47,9 +58,9 @@ class InnovizDataset(DatasetTemplate):
 
         gt_path = self.gt_path / f'{file_name}{self._gt_boxes_ext}' 
         if gt_path.exists():
-            gt_boxes = np.fromfile(gt_path, dtype=np.float64).reshape(-1, 7)
-            input_dict['gt_boxes'] = gt_boxes
-            input_dict['gt_names'] = np.array(['Car'] * gt_boxes.shape[0])
+            gt_boxes = np.fromfile(gt_path, dtype=np.float32).reshape(-1, 8)
+            input_dict['gt_boxes'] = gt_boxes[:, :7]
+            input_dict['gt_names'] = np.array([self._gt_map[int(class_val + 0.5)] for class_val in gt_boxes[:, 7]])
 
 
         data_dict = self.prepare_data(data_dict=input_dict)
