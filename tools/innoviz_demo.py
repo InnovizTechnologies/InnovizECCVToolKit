@@ -59,12 +59,16 @@ def main():
             if gt_boxes is not None:
                 gt_boxes = gt_boxes[0][:, :-1]
 
+            ref_boxes=pred_dicts and pred_dicts[0]['pred_boxes'] or None
+            ref_scores=pred_dicts and pred_dicts[0]['pred_scores'] or None
+            ref_labels=pred_dicts and pred_dicts[0]['pred_labels'] or None
+
             V.draw_scenes(
                 points=data_dict['points'][:, 1:], 
                 gt_boxes=gt_boxes,
-                ref_boxes=pred_dicts[0]['pred_boxes'],
-                ref_scores=pred_dicts[0]['pred_scores'], 
-                ref_labels=pred_dicts[0]['pred_labels'],
+                ref_boxes=ref_boxes,
+                ref_scores=ref_scores, 
+                ref_labels=ref_labels,
             )
 
             if not OPEN3D_FLAG:
