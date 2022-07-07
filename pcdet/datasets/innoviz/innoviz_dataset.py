@@ -118,5 +118,5 @@ class InnovizDataset(DatasetTemplate):
         return annos       
 
     def evaluation(self, det_annos, class_names, **kwargs):        
-        return 'evaluation is TBC', {}
+        return '', {}
 
