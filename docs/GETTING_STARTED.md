@@ -7,6 +7,26 @@ and the model configs are located within [tools/cfgs](../tools/cfgs) for differe
 
 Currently we provide the dataloader of KITTI dataset and NuScenes dataset, and the supporting of more datasets are on the way.  
 
+### Innoviz Dataset
+* Please download the dataset by registreation using this link: [Innoviz perception dataset](https://forms.gle/L6L4w154di9Kost7A).
+organize the downloaded files as follows: 
+```
+OpenPCDet
+├── data
+│   ├── innoviz
+│   │   │── training
+│   │   │   │── itwo(lidar) 
+│   │   │── testing
+│   │   │   │── itwo(lidar) & gt_boxes(annotations)
+├── pcdet
+├── tools
+```
+formats:
+- itwo(lidar) .bin files - format is (x,y,z,i) float32 according to OpenPCDet design patttern (see [README](../README.md#openpcdet-design-pattern)).
+- gt_boxes(annotations) .bin files - format is (x, y, z, dx, dy, dz, heading, class) float32 according to OpenPCDet design patttern (see [README](../README.md#openpcdet-design-pattern)). classes enumeration details in classmap.json file
+
+See [Innoviz Demo](InnovizDEMO.md) for examples how to work with innoviz dataset.
+
 ### KITTI Dataset
 * Please download the official [KITTI 3D object detection](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) dataset and organize the downloaded files as follows (the road planes could be downloaded from [[road plane]](https://drive.google.com/file/d/1d5mq0RXRnvHPVeKx6Q612z0YRO1t2wAp/view?usp=sharing), which are optional for data augmentation in the training):
 * If you would like to train [CaDDN](../tools/cfgs/kitti_models/CaDDN.yaml), download the precomputed [depth maps](https://drive.google.com/file/d/1qFZux7KC_gJ0UHEg-qGJKqteE9Ivojin/view?usp=sharing) for the KITTI training set
@@ -132,27 +152,6 @@ python -m pcdet.datasets.lyft.lyft_dataset --func create_lyft_infos \
 ```
 
 * You need to check carefully since we don't provide a benchmark for it.
-
-### Innoviz Dataset
-* Please download the dataset by registreation using this link: [Innoviz perception dataset](https://forms.gle/L6L4w154di9Kost7A).
-organize the downloaded files as follows: 
-```
-OpenPCDet
-├── data
-│   ├── innoviz
-│   │   │── training
-│   │   │   │── itwo(lidar) 
-│   │   │── testing
-│   │   │   │── itwo(lidar) & gt_boxes(annotations)
-├── pcdet
-├── tools
-```
-formats:
-- itwo(lidar) .bin files - format is (x,y,z,i) float32 according to OpenPCDet design patttern (see [README](../README.md#openpcdet-design-pattern)).
-- gt_boxes(annotations) .bin files - format is (x, y, z, dx, dy, dz, heading, class) float32 according to OpenPCDet design patttern (see [README](../README.md#openpcdet-design-pattern)). classes enumeration details in classmap.json file
-
-See [Innoviz Demo](InnovizDEMO.md) for examples how to work with innoviz dataset.
-
 
 ## Pretrained Models
 If you would like to train [CaDDN](../tools/cfgs/kitti_models/CaDDN.yaml), download the pretrained [DeepLabV3 model](https://download.pytorch.org/models/deeplabv3_resnet101_coco-586e9e4e.pth) and place within the `checkpoints` directory. Please make sure the [kornia](https://github.com/kornia/kornia) is installed since it is needed for `CaDDN`.
