@@ -5,8 +5,6 @@ and the model configs are located within [tools/cfgs](../tools/cfgs) for differe
 
 ## Dataset Preparation
 
-Currently we provide the dataloader of KITTI dataset and NuScenes dataset, and the supporting of more datasets are on the way.  
-
 ### Innoviz Dataset
 * Please download the dataset by registreation using this link: [Innoviz perception dataset](https://forms.gle/L6L4w154di9Kost7A).
 organize the downloaded files as follows: 

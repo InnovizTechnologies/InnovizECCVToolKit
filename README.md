@@ -1,6 +1,6 @@
 # InnovizTwo Dataset Toolkit
 This repo was forked from https://github.com/open-mmlab/OpenPCDet. It adds a support to open, visualize and evaluate the InnovizTwo Dataset.   
-To download and set the dataset please go to [Getting Started](docs/GETTING_STARTED.md#innoviz-dataset) and to run a quick demo after downloading the dataset please use [Innoviz Demo](docs/InnovizDEMO.md)  
+To download the dataset please go to [Getting Started](docs/GETTING_STARTED.md#innoviz-dataset) and to run a quick demo after downloading the dataset please use [Innoviz Demo](docs/InnovizDEMO.md)  
 
 <br/>
 <br/>
