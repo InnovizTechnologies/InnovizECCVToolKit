@@ -134,7 +134,7 @@ python -m pcdet.datasets.lyft.lyft_dataset --func create_lyft_infos \
 * You need to check carefully since we don't provide a benchmark for it.
 
 ### Innoviz Dataset
-* Please download the dataset by registreation using this link: [Innoviz perception dataset](https://TBC).
+* Please download the dataset by registreation using this link: [Innoviz perception dataset](https://forms.gle/L6L4w154di9Kost7A).
 organize the downloaded files as follows: 
 ```
 OpenPCDet
